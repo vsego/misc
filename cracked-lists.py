@@ -5,6 +5,8 @@ A program to retrieve [Cracked](http://www.cracked.com/)'s list-articles
 and display only their headers.
 
 Intended for fast backreading from RSS and similar collections of links.
+
+@Author: Vedran Sego <vsego@vsego.org>
 """
 
 from html.parser import HTMLParser
@@ -15,10 +17,10 @@ class CrackedListHTMLParser(HTMLParser):
     """
     The list parser, looking for `h1`, `h2.subheading`, and `a.next` tags.
     """
-    first = True
-    print_data = False
-    followups = list()
-    current = list()
+    first = True        # Is this the first page or did we get here by following a "next" link?
+    print_data = False  # Should the data be printed?
+    followups = list()  # The list of links to follow
+    current = list()    # The current title/item (in case it is broken by other tags)
     def handle_starttag(self, tag, attrs):
         """
         Handles the start of `h1` (the main title),
@@ -27,10 +29,10 @@ class CrackedListHTMLParser(HTMLParser):
         """
         attrs = dict(attrs)
         if (tag == "h1" and self.first) or \
-           (tag == "h2" and "class" in attrs and attrs["class"] == "subheading"):
+           (tag == "h2" and attrs.get("class") == "subheading"):
             self.print_data = True
             self.current = list()
-        if tag == "a" and "class" in attrs and attrs["class"] == "next" and "href" in attrs:
+        if tag == "a" and attrs.get("class") == "next" and "href" in attrs:
             self.followups.append(attrs["href"])
     def handle_endtag(self, tag):
         """
