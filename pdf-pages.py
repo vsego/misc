@@ -9,6 +9,9 @@ without big memory consumption.
 Done by following [Portable Document Format – Part 1: PDF 1.7, First Edition]
 (https://wwwimages2.adobe.com/content/dam/acom/en/devnet/pdf/PDF32000_2008.pdf)
 found [here](https://www.adobe.com/devnet/pdf/pdf_reference.html).
+
+**NOTE:** For a proper solution that uses poppler, see
+[here](https://stackoverflow.com/a/51559543/1667018).
 """
 
 from math import log10
