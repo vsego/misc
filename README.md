@@ -3,6 +3,8 @@ Miscellaneous files
 
 * `cracked-lists.py` -- A program that automates reading of [Cracked](http://www.cracked.com/)'s list-articles by loading them and displaying only their headers.
 
+* `gchq-morse.py` -- A program that solves the Morse part of [GCHQ's centenary puzzle](https://static.standard.co.uk/s3fs-public/thumbnails/image/2019/02/14/16/gchqplaque1402.jpg).
+
 * `knight_around_board.py` -- A program that finds a way for a knight to visit all the fields on the board.
 
 * `knuth-puzzle.py` -- A program that (usually :-)) solves [Knuth's puzzle](https://twitter.com/nhigham/status/752947988977311744).
