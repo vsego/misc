@@ -9,7 +9,9 @@ Miscellaneous files
 
 * `knuth-puzzle.py` -- A program that (usually :-)) solves [Knuth's puzzle](https://twitter.com/nhigham/status/752947988977311744).
 
-* `pardoners_puzzle.py` -- A program that solves the [Pardoner's puzzle](http://math-fail.com/2015/02/the-pardoners-puzzle.html)
+* `mhmt.py` -- A crude solver for [Move Here Move There](https://www.newgrounds.com/portal/view/718498).
+
+* `pardoners_puzzle.py` -- A program that solves the [Pardoner's puzzle](http://math-fail.com/2015/02/the-pardoners-puzzle.html).
 
 * `pdf-pages.py` -- A native Python module to get pages' sizes from PDF. I needed this to get pages' sizes from huge PDFs (containing large images) without big memory consumption.
 
