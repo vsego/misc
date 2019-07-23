@@ -9,6 +9,8 @@ Miscellaneous files
 
 * `knuth-puzzle.py` -- A program that (usually :-)) solves [Knuth's puzzle](https://twitter.com/nhigham/status/752947988977311744).
 
+* `match_brackets.py` -- A simple module to tackle a problem of checking if the brackets in an expression match.
+
 * `mhmt.py` -- A crude solver for [Move Here Move There](https://www.newgrounds.com/portal/view/718498).
 
 * `pardoners_puzzle.py` -- A program that solves the [Pardoner's puzzle](http://math-fail.com/2015/02/the-pardoners-puzzle.html).
