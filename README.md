@@ -23,4 +23,6 @@ Miscellaneous files
 
 * `sorting_elves.py` -- A quick solution to the [elves sorting problem](https://www.theguardian.com/science/2016/dec/19/can-you-solve-it-are-you-more-sorted-than-a-german-elf-at-christmas).
 
+* `two_teams.py` -- A programmatic solution for a [fun probability problem](https://twitter.com/DrFrostMaths/status/1247632591408242688).
+
 * `unshake.sh` -- A very rudimentary bash script to unshake videos. The results go to `/tmp/unshake/` without modifying the original files. It requires [`ffmpeg`](https://ffmpeg.org/) compiled with the `--enable-libvidstab` option (which most distros' versions are). For more details, see [here](https://scottlinux.com/2016/09/17/video-stabilization-using-vidstab-and-ffmpeg-on-linux/).
