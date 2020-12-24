@@ -17,6 +17,8 @@ Miscellaneous files
 
 * `mhmt.py` -- A crude solver for [Move Here Move There](https://www.newgrounds.com/portal/view/718498).
 
+* `nonogram.py` -- [Nonogram](https://en.wikipedia.org/wiki/Nonogram) solver.
+
 * `pardoners_puzzle.py` -- A program that solves the [Pardoner's puzzle](http://math-fail.com/2015/02/the-pardoners-puzzle.html).
 
 * `pastebin.py` -- A simple module for pasting text to [Pastebin](https://pastebin.com/). No other fancy features (for now).
