@@ -29,6 +29,8 @@ Miscellaneous files
 
 * `sandwich.py` -- A quick solution to the [club sandwich problem](https://www.theguardian.com/science/2019/dec/16/can-you-solve-it-the-club-sandwich-problem) from Guardian.
 
+* `sanitizer.py` -- A Python module that implements `@sanitizer` decorator for creating properties with trivial getter and deleter, but full control of assigned values through a setter.
+
 * `sorting_elves.py` -- A quick solution to the [elves sorting problem](https://www.theguardian.com/science/2016/dec/19/can-you-solve-it-are-you-more-sorted-than-a-german-elf-at-christmas).
 
 * `two_teams.py` -- A programmatic solution for a [fun probability problem](https://twitter.com/DrFrostMaths/status/1247632591408242688).
