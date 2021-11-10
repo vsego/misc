@@ -25,6 +25,8 @@ Miscellaneous files
 
 * `pdf-pages.py` -- A native Python module to get pages' sizes from PDF. I needed this to get pages' sizes from huge PDFs (containing large images) without big memory consumption.
 
+* `prob_55_56.py` -- A parallel processing exercise: experimental verification of a probability experiment (throw dice until you get `55` or `56`; which is more likely?).
+
 * `pyver.py` -- A simple program that prints the version of Python and some of its commonly used libraries (SciPy, NumPy, Matplotlib).
 
 * `sandwich.py` -- A quick solution to the [club sandwich problem](https://www.theguardian.com/science/2019/dec/16/can-you-solve-it-the-club-sandwich-problem) from Guardian.
