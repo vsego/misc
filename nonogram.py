@@ -21,6 +21,13 @@ import itertools
 import re
 import sys
 import time
+from typing import TypeAlias, Sequence, Self
+
+
+T_definition: TypeAlias = Sequence[str]
+T_hints: TypeAlias = Sequence[int]
+T_line: TypeAlias = list[str]
+T_board: TypeAlias = list[T_line]
 
 
 class NonogramNoSolutionError(Exception):
@@ -38,7 +45,7 @@ class NonogramSolver:
     TILE_UNKNOWN = " "
     TILE_OCCUPIED = "@"
 
-    def __init__(self, definition):
+    def __init__(self, definition: T_definition) -> None:
         try:
             self.width, self.height = self._line2list(definition[0])
         except (IndexError, TypeError, ValueError):
@@ -73,32 +80,32 @@ class NonogramSolver:
                 "the sums of vertical and horizontal hints must match",
             )
 
-        self.iterations = None
-        self.time = None
+        self.iterations = 0
+        self.time = 0.0
 
     @staticmethod
-    def _line2list(line):
+    def _line2list(line: str) -> list[int]:
         """
         Return a list of numbers from a space-separated string of numbers.
         """
         return [int(v) for v in line.strip().split()]
 
     @staticmethod
-    def _sum_hints(hints):
+    def _sum_hints(hints: Sequence[T_hints]) -> int:
         """
         Return a sum of all elements of a list of lists of `int` values.
         """
         return sum(sum(line) for line in hints)
 
     @classmethod
-    def from_file(cls, fname):
+    def from_file(cls, fname: str) -> Self:
         """
         Create an instance of `NonogramSolver` and populate it from a file.
         """
         with open(fname) as f:
             return cls(list(f))
 
-    def _get_board(self, lines):
+    def _get_board(self, lines: T_definition) -> T_board:
         """
         Return a board (a list of lists of tiles) from given list of strings.
         """
@@ -123,7 +130,7 @@ class NonogramSolver:
             for line in lines
         ]
 
-    def print_board(self):
+    def print_board(self) -> None:
         """
         Print the current state of the board to standard output.
         """
@@ -133,11 +140,11 @@ class NonogramSolver:
             print(re.sub(r".{5}", r"\g<0>  ", "".join(line))[:-1])
 
     @classmethod
-    def _get_hint(cls, line):
+    def _get_hint(cls, line: Sequence[str]) -> list[int]:
         """
         Return a line of the board as a list of `int` values containing hints.
         """
-        result = list()
+        result: list[int] = list()
         is_occupied = False
         for tile in line:
             if tile == cls.TILE_OCCUPIED:
@@ -151,7 +158,7 @@ class NonogramSolver:
         return result
 
     @classmethod
-    def _solve_line(cls, line, hints):
+    def _solve_line(cls, line: T_line, hints: T_hints) -> list[str] | None:
         """
         Solve one line as much as possible.
 
@@ -197,7 +204,7 @@ class NonogramSolver:
             return line_try
 
     @classmethod
-    def _line_is_solved(cls, line, hints):
+    def _line_is_solved(cls, line: T_line, hints: T_hints) -> bool:
         """
         Return `True` if the line's number of occupied tiles matches `hints`.
 
@@ -210,7 +217,7 @@ class NonogramSolver:
         return total_occupied == sum(hints)
 
     @classmethod
-    def _fill_done_line(cls, line):
+    def _fill_done_line(cls, line: T_line) -> None:
         """
         Replace all of the unknown tiles in the line with empty ones.
         """
@@ -219,7 +226,7 @@ class NonogramSolver:
             for tile in line
         ]
 
-    def _try_horizontal_lines(self, board, done_h):
+    def _try_horizontal_lines(self, board: T_board, done_h: set[int]) -> bool:
         """
         Try solving all horizontal lines (each of them once).
         """
@@ -236,7 +243,9 @@ class NonogramSolver:
                     done_h.add(idx)
         return result
 
-    def _fill_finished_vertical_lines(self, board, done_v):
+    def _fill_finished_vertical_lines(
+        self, board: T_board, done_v: set[int],
+    ) -> None:
         """
         Replace unknown tiles with empty ones in all finished vertical lines.
         """
@@ -250,7 +259,7 @@ class NonogramSolver:
                     line[idx] = c_tile
                 done_v.add(idx)
 
-    def _try_vertical_lines(self, board, done_v):
+    def _try_vertical_lines(self, board: T_board, done_v: set[int]) -> bool:
         """
         Try solving all vertical lines (each of them once).
         """
@@ -269,7 +278,9 @@ class NonogramSolver:
                 result = True
         return result
 
-    def _fill_finished_horizontal_lines(self, board, done_h):
+    def _fill_finished_horizontal_lines(
+        self, board: T_board, done_h: set[int],
+    ) -> None:
         """
         Replace unknown tiles with empty ones in all finished horizontal lines.
         """
@@ -278,13 +289,13 @@ class NonogramSolver:
                 self._fill_done_line(line)
                 done_h.add(idx)
 
-    def solve(self):
+    def solve(self) -> None:
         """
         Solve the current board as much as possible.
         """
         board = self.board
-        done_h = set()
-        done_v = set()
+        done_h: set[int] = set()
+        done_v: set[int] = set()
         start_time = time.time()
         for iteration in range(self.width * self.height):
             got_something_horz = self._try_horizontal_lines(board, done_h)
