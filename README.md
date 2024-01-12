@@ -5,6 +5,8 @@ Miscellaneous files
 
 * `dominoes.py` -- A solution for the dominoes problem [posted in The Guardian on 15th Jun 2020](https://www.theguardian.com/science/2020/jun/15/can-you-solve-it-domino-dancing#comment-141591276).
 
+* `find_expressions.py` -- A program to find all the expressions using all of the given numbers that evaluate to the given target.
+
 * `gchq-morse.py` -- A program that solves the Morse part of [GCHQ's centenary puzzle](https://static.standard.co.uk/s3fs-public/thumbnails/image/2019/02/14/16/gchqplaque1402.jpg).
 
 * `knight_around_board.py` -- A program that finds a way for a knight to visit all the fields on the board.
